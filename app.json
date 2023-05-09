@@ -7,9 +7,14 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/noname.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "showDuration": 3000,
+      "hideDuration": 0,
+      "fadeInDuration": 0,
+      "fadeOutDuration": 0,
+      "autoHide": true
     },
     "assetBundlePatterns": [
       "**/*"

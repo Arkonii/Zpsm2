@@ -1,12 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Restaurants from './components/Restaurants';
+import Restaurant from './components/Restaurant';
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
+
+    fetch('http://localhost:3001', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        }})
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Restaurants">
+          <Stack.Screen name="Restauracje" component={Restaurants} />
+            <Stack.Screen name="Restaurant" component={Restaurant} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 

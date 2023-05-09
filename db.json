@@ -1,0 +1,31 @@
+{
+  "restaurants": [
+    { "id": 1, "title": "restauracja 1", "body": "To jest opis pierwszej restauracji" },
+    { "id": 2, "title": "restauracja 2", "body": "To jest opis drugiej restauracji" },
+    { "id": 3, "title": "restauracja 3", "body": "To jest opis trzeciej restauracji" }
+  ],
+  "dishes": [
+    { "id": 1, "restaurantId": 1, "body": "danie 1" , "description": "opis 1" },
+    { "id": 2, "restaurantId": 1, "body": "danie 2" , "description": "opis 2" },
+    { "id": 3, "restaurantId": 2, "body": "danie 3" , "description": "opis 3" },
+    { "id": 4, "restaurantId": 3, "body": "danie 4" , "description": "opis 4"},
+    { "id": 5, "restaurantId": 3, "body": "danie 5" ,"description": "opis 5" },
+    { "id": 6, "restaurantId": 1, "body": "danie 6" , "description": "opis 6"},
+    { "id": 7, "restaurantId": 3, "body": "danie 7" , "description": "opis 7"},
+    { "id": 8, "restaurantId": 2, "body": "danie 8" , "description": "opis 8"},
+    { "id": 9, "restaurantId": 2, "body": "danie 9" , "description": "opis 9"},
+    { "id": 10, "restaurantId": 2, "body": "danie 10" , "description": "opis 10"},
+    { "id": 11, "restaurantId": 2, "body": "danie 11" , "description": "opis 11"},
+    { "id": 12, "restaurantId": 1, "body": "danie 12" , "description": "opis 12"},
+    { "id": 13, "restaurantId": 3, "body": "danie 13" , "description": "opis 13"},
+    { "id": 14, "restaurantId": 1, "body": "danie 14" , "description": "opis 14"},
+    { "id": 15, "restaurantId": 1, "body": "danie 15" , "description": "opis 15"},
+    { "id": 16, "restaurantId": 3, "body": "danie 16" , "description": "opis 16"},
+    { "id": 17, "restaurantId": 1, "body": "danie 17" , "description": "opis 17"},
+    { "id": 18, "restaurantId": 3, "body": "danie 18" , "description": "opis 18"},
+    { "id": 19, "restaurantId": 3, "body": "danie 19" , "description": "opis 19"},
+    { "id": 20, "restaurantId": 3, "body": "danie 20" , "description": "opis 20"},
+    { "id": 21, "restaurantId": 2, "body": "danie 21" , "description": "opis 21"},
+    { "id": 22, "restaurantId": 2, "body": "danie 22" , "description": "opis 22"}
+  ]
+}
