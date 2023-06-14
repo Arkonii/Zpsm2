@@ -1,15 +1,36 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, FlatList } from 'react-native';
-import {postData , getData} from '../config/server';
-import { StyleSheet } from 'react-native';
+import { getData } from '../config/server';
 import { TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import styles from '../config/styles';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default function Restaurants({ navigation }) {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [search, setSearch] = useState('');
+    const [cart, setCart] = useState(0);
+
+    const resetCartFromAsyncStorage = async () => {
+        try {
+            const value = await AsyncStorage.getItem('cart');
+            const value2 = await AsyncStorage.getItem('productsId');
+            if (value !== null && value2!==null) {
+                setCart(parseFloat(value));
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        try {
+            await AsyncStorage.setItem('cart', '0');
+            await AsyncStorage.setItem('productIds', JSON.stringify([]));
+        } catch (error) {
+            console.error('Error:', error);
+        }
+        console.log("czyszczenie");
+    };
 
     useEffect(() => {
         getData('restaurants')
@@ -25,7 +46,15 @@ export default function Restaurants({ navigation }) {
             .catch((error) => {
                 console.log(error);
             });
+
+        resetCartFromAsyncStorage();
     }, []);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            resetCartFromAsyncStorage();
+        }, [])
+    );
 
     if (isLoading) {
         return (
@@ -36,8 +65,8 @@ export default function Restaurants({ navigation }) {
     }
 
     const buttonPress = (item) => {
-        console.log(`Clicked button with id: ${item}`);
-        navigation.navigate("Restaurant",{jsonItem: item});
+        console.log(`Clicked button with id: ${item.id}`);
+        navigation.navigate("Restaurant", { jsonItem: item });
     };
 
     const renderItem = ({ item }) => {
@@ -60,10 +89,10 @@ export default function Restaurants({ navigation }) {
             || item.body.toLowerCase().includes(search.toLowerCase())
     );
 
-    return(
+    return (
         <View style={styles.root}>
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1, margin: 10}}
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10 }}
                 onChangeText={(text) => setSearch(text)}
                 value={search}
                 placeholder="Wyszukaj..."
@@ -74,6 +103,5 @@ export default function Restaurants({ navigation }) {
                 keyExtractor={(item) => item.id.toString()}
             />
         </View>
-    )
+    );
 }
-

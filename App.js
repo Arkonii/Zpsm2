@@ -1,40 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Restaurants from './components/Restaurants';
 import Restaurant from './components/Restaurant';
+import ShoppingCart from './components/ShoppingCart';
+import Delivery from './components/Delivery';
+import DeliveryAddress from './components/DeliveryAddress';
+import Payment from './components/Payment';
+
 
 
 const Stack = createStackNavigator();
 
 export default function App() {
 
-    fetch('http://localhost:3001', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        }})
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-
   return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Restaurants">
-          <Stack.Screen name="Restauracje" component={Restaurants} />
+            <Stack.Screen name="Restauracje" component={Restaurants} />
             <Stack.Screen name="Restaurant" component={Restaurant} />
+            <Stack.Screen name="Koszyk" component={ShoppingCart} />
+            <Stack.Screen name="Dostawa" component={Delivery} />
+            <Stack.Screen name="Dostawa na adres" component={DeliveryAddress} />
+            <Stack.Screen name="Płatność" component={Payment} />
         </Stack.Navigator>
       </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

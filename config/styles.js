@@ -14,6 +14,15 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
     },
+    container2: {
+        flex: 1,
+        backgroundColor: '#c8ffb0',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonSpacer: {
+        marginVertical: 10,
+    },
     author: {
         fontWeight: 'bold',
         marginRight: 10,
@@ -35,6 +44,24 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    priceText: {
+        color: '#000000',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    inputContainer: {
+        width: '80%', // Szerokość pola tekstowego
+        marginBottom: 10,
+    },
+    input: {
+        width: '100%',
+        height: 40,
+        borderWidth: 1,
+        borderColor: 'black',
+        borderRadius: 5,
+        paddingHorizontal: 10,
         textAlign: 'center',
     },
 
